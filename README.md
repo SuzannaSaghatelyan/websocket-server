@@ -1,0 +1,1 @@
+This WebSocket server calculates and sends the Moon’s Right Ascension (RA) and Declination (DEC) coordinates every 10 seconds. It uses a simplified astronomical model and serves real-time data to connected clients.

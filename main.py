@@ -3,7 +3,7 @@ import websockets
 from datetime import datetime, timedelta
 import math
 
-def calculate_moon_ra_dec():
+def calculate_moon_ra_dec() -> tuple[float, float]:
     now = datetime.utcnow()
 
     julian_date = 2451545.0 + (now - datetime(2000, 1, 1, 12)).total_seconds() / 86400.0
@@ -28,7 +28,7 @@ def calculate_moon_ra_dec():
 
     return ra_hours, dec
 
-def format_ra_dec(ra, dec):
+def format_ra_dec(ra: float, dec: float) -> tuple[str, str]:
     ra_str = f"{int(ra):02}:{int((ra % 1) * 60):02}:{int(((ra * 60) % 1) * 60):02}"
     dec_str = f"{'+' if dec >= 0 else '-'}{int(abs(dec)):02}\u00b0 {int((abs(dec) % 1) * 60):02}' {int(((abs(dec) * 60) % 1) * 60):02}\""
     return ra_str, dec_str
@@ -52,5 +52,5 @@ async def main():
         print("WebSocket server is running on ws://localhost:8765")
         await asyncio.Future()
 
-if __name__ == "__main__":
-    asyncio.run(main())
+asyncio.run(main())
+

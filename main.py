@@ -47,10 +47,11 @@ async def send_moon_coordinates(websocket):
     except websockets.ConnectionClosed:
         print("Client disconnected")
 
-async def main():
+async def run():
     async with websockets.serve(send_moon_coordinates, "localhost", 8765):
         print("WebSocket server is running on ws://localhost:8765")
         await asyncio.Future()
 
-asyncio.run(main())
+if __name__ == "__main__":
+    asyncio.run(run())
 
